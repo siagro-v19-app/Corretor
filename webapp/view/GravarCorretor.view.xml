@@ -1,0 +1,107 @@
+<mvc:View xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="br.com.idxtecCorretor.controller.GravarCorretor"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:f="sap.ui.layout.form">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<Panel headerText="Corretor">
+							<f:SimpleForm id="formCorretor"
+								editable="true"
+								layout="ResponsiveGridLayout"
+								labelSpanXL="4"
+								labelSpanL="4"
+								labelSpanM="4"
+								labelSpanS="12"
+								adjustLabelSpan="false"
+								emptySpanXL="0"
+								emptySpanL="0"
+								emptySpanM="0"
+								emptySpanS="0"
+								columnsXL="3"
+								columnsL="2"
+								columnsM="2"
+								singleContainerFullSize="false">
+								<f:content>
+									<core:Title text="{view>/titulo}"/>
+									<Label text="Nome" labelFor="nome"/>
+									<Input id="nome" value="{model>/Nome}" required="true"/>
+									
+									<Label text="Parceiro de Negócio" labelFor="parceironegocio"/>
+									<Input selectedKey="{path: 'model>/ParceiroNegocio', type: 'sap.ui.model.odata.type.Int32'}"
+										textFormatMode="KeyValue"
+										showSuggestion="true"
+										showValueHelp="true"
+										valueHelpRequest="handleSearchParceiro"
+										suggestionItems="{
+											path: '/ParceiroNegocios',
+											events: {
+												dataReceived: '.parceiroNegocioReceived'
+											}}"
+										id="parceironegocio">
+										<suggestionItems>
+											<core:ListItem key="{Id}" text="{RazaoSocial}"/>
+										</suggestionItems>
+									</Input>
+									
+									<Label text="Email" labelFor="Email"/>
+									<Input id="Email" value="{model>/Email}"/>
+									
+									<Label text="Telefone" labelFor="Telefone"/>
+									<Input id="Telefone" value="{model>/Telefone}"/>
+									
+									<Label text="UF" labelFor="uf"/>
+									<Input selectedKey="{path: 'model>/Uf', type: 'sap.ui.model.odata.type.Int32'}"
+										textFormatMode="KeyValue"
+										showSuggestion="true"
+										showValueHelp="true"
+										valueHelpRequest="handleSearchUf"
+										suggestionItems="{
+											path: '/Ufs',
+											events: {
+												dataReceived: '.ufReceived'
+											}}"
+										id="uf">
+										<suggestionItems>
+											<core:ListItem key="{Id}" text="{Sigla}"/>
+										</suggestionItems>
+									</Input>
+									
+									<Label text="Município" labelFor="municipio"/>
+									<Input selectedKey="{path: 'model>/Municipio', type: 'sap.ui.model.odata.type.Int32'}"
+										textFormatMode="KeyValue"
+										showSuggestion="true"
+										showValueHelp="true"
+										valueHelpRequest="handleSearchMunicipio"
+										suggestionItems="{
+											path: '/Municipios',
+											events: {
+												dataReceived: '.municipioReceived'
+											}}"
+										id="municipio">
+										<suggestionItems>
+											<core:ListItem key="{Id}" text="{Nome}"/>
+										</suggestionItems>
+									</Input>
+									
+									<Label text="Observações" labelFor="obs"/>
+									<TextArea id="obs" value="{model>/Observacoes}" rows="6" maxLength="254"/>
+								</f:content>
+							</f:SimpleForm> 
+						</Panel>
+					</VBox>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://save" id="salvar" text="Salvar" press="onSalvar"/>
+						<Button icon="sap-icon://reset" id="voltar" text="Cancelar" press="onVoltar"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
