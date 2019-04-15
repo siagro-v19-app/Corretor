@@ -3,8 +3,8 @@
 	xmlns:core="sap.ui.core">
 	<SelectDialog
 		title="Municípios"
-		class="sapUiPopupWithPadding"
-		items="{/Municipios}"
+		class="sapUiPopupWithPadding sapUiSizeCompact"
+		items="{path: '/Municipios', sorter: {path: 'Nome'}}"
 		search="_handleValueHelpSearch"
 		confirm="_handleValueHelpClose"
 		cancel="_handleValueHelpClose">
