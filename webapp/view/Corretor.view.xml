@@ -11,7 +11,6 @@
 			<Page showHeader="false" class="sapUiContentPadding" enableScrolling="false">
 				<content>
 					<t:Table id="tableCorretor"
-						rows="{path: '/Corretors', sorter: {path: 'Nome'}}"
 						selectionMode="Single"
 						selectionBehavior="Row"
 						class="sapUiSizeCondensed"
